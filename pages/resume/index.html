@@ -56,6 +56,19 @@ permalink: /cv/
     {% endfor %}
   </section>
 
+  {% if data.projects %}
+  <section class="content-section">
+    <h3 class="sub-title">{{ data.projects.title }}</h3>
+
+    {% for item in data.projects.items %}
+    <section class="content-section-data">
+      <h4><span class="highlight">{{ item.title }}</span>{% if item.link %} <a href="{{ item.link }}">{{ item.link | remove: "https://" }}</a>{% endif %}</h4>
+      <p>{{ item.content }}</p>
+    </section>
+    {% endfor %}
+  </section>
+  {% endif %}
+
   <footer>
     <a class="print-only">yurifrl.com/cv</a>
     <button class="no-print" onclick="window.print()">PDF</button>

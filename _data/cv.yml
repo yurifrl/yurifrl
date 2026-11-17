@@ -1,4 +1,4 @@
-title: Platform Engineer
+title: Staff Site Reliability Engineer
 location: Brazil
 content: Versatile and skilled engineer with expertise in Kubernetes, Linux, Golang, and ArgoCD, among other technologies. Experienced in designing and managing scalable systems, automating infrastructure, and ensuring efficient deployment workflows. Proficient in implementing modern software delivery practices and driving continuous improvement. Collaborative team player with a strong track record of delivering robust solutions.
 
@@ -12,15 +12,14 @@ proficiencies:
   title: Proficiencies
   items:
     - Kubernetes
-    - AWS
     - Container Orchestration
     - Docker
-    - Elixir
     - Git
     - Golang
+    - Rust
     - Google Cloud
-    - GraphQL
     - Haskell
+    - Elixir
     - Istio
     - JavaScript
     - Linux
@@ -30,21 +29,41 @@ proficiencies:
     - Prometheus
     - Redis
     - Postgres
-    - REST API
     - Envoy Service Mesh
-    - Terraform
-    - Ansible
+
+projects:
+  title: Projects
+  items:
+    - title: Tennon
+      link: https://github.com/yurifrl/tennon
+      content: Kubernetes-native control plane and proxy for MCP servers, in Go (~8.5k lines, Helm chart, React UI). Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools. Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes).
+    - title: Agent Substrate on a home Kubernetes cluster
+      link: https://github.com/yurifrl/home-systems
+      content: Runs agent-substrate, gVisor-sandboxed AI agents on Kubernetes, on a 7-node Talos Linux cluster managed with GitOps (61 ArgoCD applications). Ported the Helm charts to Talos, fixed RBAC that blocked worker scheduling, enabled user namespaces for gVisor, made the charts multi-arch (amd64/arm64), and built a CI pipeline that publishes digest-pinned images.
 
 previous:
   title: Professional Experience
   items:
-    - title: Staff Platform Engineer - Cloudwalk
-      period: 12/20 to Present
+    - title: Staff Site Reliability Engineer - Flutter Brazil (NSX Group)
+      period: 02/24 to Present
       contents:
-        - Engineered and deployed robust CI/CD pipelines with multi-cluster Kubernetes.
-        - Developed comprehensive system status metrics for actionable insights.
-        - Seamlessly migrated Postgres databases between providers, ensuring data integrity.
-        - Created an intuitive Internal CLI to improve development efficiency.
+        - Built AI Hub, the company's internal AI agent platform, running on a dedicated EKS cluster. It orchestrates dozens of agents simultaneously, each with its own memory, tools and policies; agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating work to each other over the A2A protocol.
+        - Connected AI Hub to our data lake and Slack so product and business teams query company data in natural language under their own permissions (per-user OAuth for security and audit). Every LLM call goes through the AI Hub Gateway, with cost tracking per project, agent and user, PII and prompt-injection guardrails, and daily spend limits across OpenAI, Anthropic, AWS Bedrock and OpenRouter.
+        - Led the right-sizing of the production Kubernetes cluster with SRE and engineering teams ahead of the 2026 World Cup, setting CPU and memory requests and limits from real usage. Cut nodes by 62% and monthly cost by 37%, while the same platform absorbed a 9.7x traffic peak, about 15x more capacity per unit of cost.
+        - Built an AI right-sizing agent that turns real usage into CPU/memory recommendations (156 on staging in its first run); the team's AI right-sizing tooling then opened 88 requests/limits PRs across product teams in a single batch.
+        - Created and led the company's load-testing platform: a safe, human- and agent-friendly way to run distributed load tests as part of the developer workflow, triggered from GitHub Actions, PR and issue comments, a CLI or AI agents (skills, AGENTS.md, MCP), with guardrails such as staging-only runs by default, production tests behind SRE review, org-membership checks, dry runs and capped runner sizes. Across 41 services with 1,500+ published run reports; it exposed real breaking points and misattributed bottlenecks before World Cup traffic hit and now it's a staple of software development workflow.
+        - Designed and ran World Cup hypercare, including the war room, roles, runbooks, dashboards and escalation paths, plus a live broadcast overlay and a connected-users vs historical-curve chart for operators during matches.
+        - Created Incident Review Admin, a tool that prepares recurring incident reviews with automated slide generation, action-item follow-up and AI-assisted investigation.
+        - Led incident response and postmortems, and built a blameless space where the company learns from past incidents.
+        - Automated the annual regulatory certification with an AI-driven process; the previous year it took dozens of people, and it now runs almost entirely on its own.
+        - Implemented Crossplane to bring infrastructure closer to the code, so developers declare the infrastructure their application depends on alongside the application itself.
+    - title: Senior Site Reliability Engineer - CloudWalk
+      period: 11/22 to 02/24
+      contents:
+        - Engineered and deployed CI/CD pipelines with multi-cluster Kubernetes.
+        - Developed system status metrics for actionable insights on application performance for the development teams.
+        - Seamlessly migrated Postgres databases between providers, ensuring data integrity with zero downtime.
+        - Created an internal CLI that runs every company application locally in an environment as close to production as possible, improving development efficiency.
         - Implemented Infrastructure as Code (IaC) principles using Terraform, Helm, and ArgoCD.
         - Ensured system availability and service-level objectives (SLOs) through proactive incident management.
         - Collaborated with software engineering teams to implement DevOps practices.
@@ -53,29 +72,32 @@ previous:
     - title: Senior Software Engineer - Telnyx
       period: 12/20 to 11/22
       contents:
-        - Developed and maintained production software using Elixir & Phoenix
-        - Designed new features documented as RFC
-        - Created and maintained technical documentation and public REST APIs
-        - Managed technical debts and worked on SLOs
-        - Onboarded new team members and participated in technical hiring processes
-        - Improved system observability and optimized deployment
-        - Maintained service scalability, undertook on-call rotations, and adjusted alerts
+        - Developed and maintained production software in Elixir and Phoenix.
+        - Designed new features documented as RFCs.
+        - Created and maintained technical documentation and public REST APIs.
+        - Managed technical debt and worked on SLOs.
+        - Onboarded new team members and took part in technical hiring.
+        - Improved system observability and optimized deployments.
+        - Kept services scalable, took on-call rotations and tuned alerts.
     - title: Senior Site Reliability Engineer - Dafiti
-      period: 6/19 to 12/20
+      period: 07/19 to 12/20
       contents:
-        - Modernized Dafiti's legacy software architecture to cloud-based solutions
-        - Managed automated Black Friday Stress testing and acceptance tests
-        - Orchestrated application scalability based on custom metrics
+        - Modernized Dafiti's legacy architecture into cloud-based services.
+        - Ran automated Black Friday stress testing and acceptance tests.
+        - Scaled applications automatically based on custom metrics.
         - Performed vendor management, including cloud providers and third-party tool providers.
-        - Implemented ArgoCD for application deployment and Istio for service mesh
-    - title: Senior Site Reliability Engineer - Totvs
-      period: 3/17 to 6/19
+        - Implemented ArgoCD for application deployment and Istio as the service mesh.
+    - title: Senior Software Engineer - TOTVS
+      period: 04/17 to 07/19
       contents:
-        - Provisioned legacy software on the cloud using containers and Kubernetes
-        - Engineered and developed an application for infrastructure management, managing Helm and Terraform executions
-        - Developed a GraphQL API for internal instance requests and an execution engine using Ruby
-        - Developed an application allowing single-thread software to run concurrently in multiple pods using Go and Redis
-        - Deployed CI with Drone for chart and image publication, used Rancher for Kubernetes-based application deployment
-        - Utilized Prometheus for system monitoring
-        - Employed FaaS and AWS Lambda for efficient, cost-effective services
-        - Managed state in an Angular application using Flux architecture
+        - Moved the company's most important application, previously installed on-premises for each customer, to containers on Kubernetes, making it scalable and turning it into a SaaS product.
+        - Built a platform that let users provision any type of service through a GraphQL API, later evolved into a set of Kubernetes controllers that provisioned systems from Kubernetes CRDs, before Crossplane existed.
+        - Deployed CI with Drone for chart and image publication, used Rancher for Kubernetes-based application deployment.
+    - title: Full Stack Software Engineer - Yebo
+      period: 02/14 to 02/17
+      contents:
+        - Built and ran a large-scale e-commerce backend platform: customers plugged in their own frontends while the platform handled all the business rules and features an online store needs.
+    - title: Freelance Web Developer
+      period: 2011 to 2014
+      contents:
+        - Built e-commerce and institutional websites.
