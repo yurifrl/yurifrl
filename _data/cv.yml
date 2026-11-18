@@ -36,7 +36,7 @@ projects:
   items:
     - title: Tennon
       link: https://github.com/yurifrl/tennon
-      content: Kubernetes-native control plane and proxy for MCP servers, in Go (~8.5k lines, Helm chart, React UI). Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools. Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes).
+      content: Kubernetes-native control plane and proxy for MCP servers, in Go (Helm chart, React UI). Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools. Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes).
     - title: Agent Substrate on a home Kubernetes cluster
       link: https://github.com/yurifrl/home-systems
       content: Runs agent-substrate, gVisor-sandboxed AI agents on Kubernetes, on a 7-node Talos Linux cluster managed with GitOps (61 ArgoCD applications). Ported the Helm charts to Talos, fixed RBAC that blocked worker scheduling, enabled user namespaces for gVisor, made the charts multi-arch (amd64/arm64), and built a CI pipeline that publishes digest-pinned images.
@@ -60,13 +60,12 @@ previous:
     - title: Senior Site Reliability Engineer - CloudWalk
       period: 11/22 to 02/24
       contents:
+        - Owned the deployment and operation of CloudWalk's blockchain ledger on Kubernetes in Google Cloud. It is a permissioned, Ethereum-compatible network where InfinitePay settles customer receivables in BRLC, the company's stablecoin pegged 1:1 to the Brazilian real. Ran it through its peak growth after the move off Ethereum and Polygon to a network built for 500 transactions per second, 70x the previous capacity.
         - Engineered and deployed CI/CD pipelines with multi-cluster Kubernetes.
         - Developed system status metrics for actionable insights on application performance for the development teams.
         - Seamlessly migrated Postgres databases between providers, ensuring data integrity with zero downtime.
         - Created an internal CLI that runs every company application locally in an environment as close to production as possible, improving development efficiency.
         - Implemented Infrastructure as Code (IaC) principles using Terraform, Helm, and ArgoCD.
-        - Ensured system availability and service-level objectives (SLOs) through proactive incident management.
-        - Collaborated with software engineering teams to implement DevOps practices.
         - Designed and implemented a scalable logging, monitoring, and alerting system.
         - Provided on-call support and management, performed root cause analysis, and implemented preventative measures.
     - title: Senior Software Engineer - Telnyx
