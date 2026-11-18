@@ -1,97 +1,103 @@
 title: Staff Site Reliability Engineer
 location: Brazil
-content: Versatile and skilled engineer with expertise in Kubernetes, Linux, Golang, and ArgoCD, among other technologies. Experienced in designing and managing scalable systems, automating infrastructure, and ensuring efficient deployment workflows. Proficient in implementing modern software delivery practices and driving continuous improvement. Collaborative team player with a strong track record of delivering robust solutions.
+content: "Staff SRE building the platform layer under production systems: AI agent infrastructure on Kubernetes, load-testing and capacity engineering, and incident response. At Flutter Brazil, cut cluster cost 37% while absorbing a 9.7x World Cup traffic peak, and built the company's internal AI agent platform. 15 years across Kubernetes, GitOps, Go, Elixir and cloud infrastructure."
 
 main_items:
-  - title: Innovative engineer
-    content: Experienced in driving the full software development lifecycle, from conceptualization to the delivery of next-generation applications and customizable solutions. Committed to pushing boundaries and finding creative solutions to complex challenges, consistently exceeding expectations.
-  - title: Expertise in Advanced Development Methodologies
-    content: Deep knowledge and hands-on experience with microservices and container orchestration tools. Played a pivotal role in designing and deploying cutting-edge software applications, leveraging the latest advancements in technology to deliver high-performance and scalable solutions.
+  - title: AI Platform Engineering
+    content: Built and run an internal AI agent platform on Kubernetes (Google ADK, MCP, A2A) with an LLM gateway for per-project cost tracking, PII and prompt-injection guardrails and spend limits across OpenAI, Anthropic, AWS Bedrock and OpenRouter, plus per-user OAuth access to the company data lake. Open-source author of Tennon, a Kubernetes-native control plane for MCP servers.
 
 proficiencies:
   title: Proficiencies
   items:
+    - Ai
     - Kubernetes
-    - Container Orchestration
-    - Docker
-    - Git
-    - Golang
-    - Rust
-    - Google Cloud
-    - Haskell
+    - Go
     - Elixir
+    - Rust
+    - TypeScript/JavaScript
+    - Haskell
+    - ArgoCD (GitOps)
+    - Helm
+    - Crossplane
+    - Terraform
+    - AWS (EKS)
+    - Google Cloud
+    - Talos Linux
+    - NixOS
     - Istio
-    - JavaScript
-    - Linux
-    - Microservices
-    - Serverless
-    - Nixos
+    - Envoy
+    - gVisor
     - Prometheus
+    - SLOs
+    - Incident Management
+    - Load Testing
+    - Capacity Planning
+    - GitHub Actions
+    - MCP
+    - A2A Protocol
+    - Google ADK
+    - LLM Gateways and Guardrails
+    - PostgreSQL
     - Redis
-    - Postgres
-    - Envoy Service Mesh
+    - Docker
+    - Linux
 
 projects:
   title: Projects
   items:
     - title: Tennon
       link: https://github.com/yurifrl/tennon
-      content: Kubernetes-native control plane and proxy for MCP servers, in Go (Helm chart, React UI). Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools. Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes).
-    - title: Agent Substrate on a home Kubernetes cluster
+      content: Open-source, Kubernetes-native control plane and proxy for MCP servers (Go, Helm, React). Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools. Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes).
+    - title: gVisor-sandboxed AI agents on Talos Kubernetes
       link: https://github.com/yurifrl/home-systems
-      content: Runs agent-substrate, gVisor-sandboxed AI agents on Kubernetes, on a 7-node Talos Linux cluster managed with GitOps (61 ArgoCD applications). Ported the Helm charts to Talos, fixed RBAC that blocked worker scheduling, enabled user namespaces for gVisor, made the charts multi-arch (amd64/arm64), and built a CI pipeline that publishes digest-pinned images.
+      content: Runs agent-substrate, gVisor-sandboxed AI agents, on a 7-node Talos Linux cluster managed with GitOps (ArgoCD). Ported the Helm charts to Talos, fixed RBAC that blocked worker scheduling, enabled user namespaces for gVisor.
 
 previous:
   title: Professional Experience
   items:
-    - title: Staff Site Reliability Engineer - Flutter Brazil (NSX Group)
+    - title: Staff Site Reliability Engineer - Flutter Brazil
       period: 02/24 to Present
       contents:
         - Built AI Hub, the company's internal AI agent platform, running on a dedicated EKS cluster. It orchestrates dozens of agents simultaneously, each with its own memory, tools and policies; agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating work to each other over the A2A protocol.
         - Connected AI Hub to our data lake and Slack so product and business teams query company data in natural language under their own permissions (per-user OAuth for security and audit). Every LLM call goes through the AI Hub Gateway, with cost tracking per project, agent and user, PII and prompt-injection guardrails, and daily spend limits across OpenAI, Anthropic, AWS Bedrock and OpenRouter.
-        - Led the right-sizing of the production Kubernetes cluster with SRE and engineering teams ahead of the 2026 World Cup, setting CPU and memory requests and limits from real usage. Cut nodes by 62% and monthly cost by 37%, while the same platform absorbed a 9.7x traffic peak, about 15x more capacity per unit of cost.
-        - Built an AI right-sizing agent that turns real usage into CPU/memory recommendations (156 on staging in its first run); the team's AI right-sizing tooling then opened 88 requests/limits PRs across product teams in a single batch.
-        - Created and led the company's load-testing platform: a safe, human- and agent-friendly way to run distributed load tests as part of the developer workflow, triggered from GitHub Actions, PR and issue comments, a CLI or AI agents (skills, AGENTS.md, MCP), with guardrails such as staging-only runs by default, production tests behind SRE review, org-membership checks, dry runs and capped runner sizes. Across 41 services with 1,500+ published run reports; it exposed real breaking points and misattributed bottlenecks before World Cup traffic hit and now it's a staple of software development workflow.
+        - Led right-sizing of the production Kubernetes cluster ahead of the 2026 World Cup, setting CPU and memory requests and limits from real usage: 62% fewer nodes, 37% lower monthly cost, and a 9.7x traffic peak absorbed (~15x more capacity per unit of cost).
+        - Built an AI right-sizing agent that turns real usage into CPU/memory recommendations (156 on staging in its first run); its tooling then opened 88 requests/limits PRs across product teams in a single batch.
+        - Created and led the company's load-testing platform (41 services, 1,500+ published run reports), triggered from GitHub Actions, PR comments, a CLI or AI agents. Guardrails include staging-only by default, SRE review for production, org-membership checks and capped runner sizes. It exposed real breaking points and misattributed bottlenecks before World Cup traffic hit and is now a standard part of the developer workflow.
         - Designed and ran World Cup hypercare, including the war room, roles, runbooks, dashboards and escalation paths, plus a live broadcast overlay and a connected-users vs historical-curve chart for operators during matches.
         - Created Incident Review Admin, a tool that prepares recurring incident reviews with automated slide generation, action-item follow-up and AI-assisted investigation.
         - Led incident response and postmortems, and built a blameless space where the company learns from past incidents.
         - Automated the annual regulatory certification with an AI-driven process; the previous year it took dozens of people, and it now runs almost entirely on its own.
-        - Implemented Crossplane to bring infrastructure closer to the code, so developers declare the infrastructure their application depends on alongside the application itself.
+        - Introduced Crossplane so developers declare the infrastructure their application depends on alongside the application itself, removing hand-off tickets between teams.
     - title: Senior Site Reliability Engineer - CloudWalk
       period: 11/22 to 02/24
       contents:
         - Owned the deployment and operation of CloudWalk's blockchain ledger on Kubernetes in Google Cloud. It is a permissioned, Ethereum-compatible network where InfinitePay settles customer receivables in BRLC, the company's stablecoin pegged 1:1 to the Brazilian real. Ran it through its peak growth after the move off Ethereum and Polygon to a network built for 500 transactions per second, 70x the previous capacity.
-        - Engineered and deployed CI/CD pipelines with multi-cluster Kubernetes.
-        - Developed system status metrics for actionable insights on application performance for the development teams.
-        - Seamlessly migrated Postgres databases between providers, ensuring data integrity with zero downtime.
-        - Created an internal CLI that runs every company application locally in an environment as close to production as possible, improving development efficiency.
-        - Implemented Infrastructure as Code (IaC) principles using Terraform, Helm, and ArgoCD.
-        - Designed and implemented a scalable logging, monitoring, and alerting system.
-        - Provided on-call support and management, performed root cause analysis, and implemented preventative measures.
+        - Built CI/CD pipelines across multi-cluster Kubernetes, with all infrastructure as code in Terraform, Helm and ArgoCD.
+        - Migrated Postgres databases between providers with zero downtime and no data loss.
+        - Created an internal CLI that runs every company application locally in an environment as close to production as possible.
+        - Designed the logging, monitoring and alerting stack, plus system status metrics that gave development teams actionable performance insight.
+        - Kept services within their SLOs through on-call, incident management, root cause analysis and preventative fixes.
     - title: Senior Software Engineer - Telnyx
       period: 12/20 to 11/22
       contents:
-        - Developed and maintained production software in Elixir and Phoenix.
-        - Designed new features documented as RFCs.
-        - Created and maintained technical documentation and public REST APIs.
-        - Managed technical debt and worked on SLOs.
-        - Onboarded new team members and took part in technical hiring.
-        - Improved system observability and optimized deployments.
-        - Kept services scalable, took on-call rotations and tuned alerts.
+        - Built and ran production services in Elixir and Phoenix, designing new features through RFCs.
+        - Owned public REST APIs and their technical documentation.
+        - Paid down technical debt and worked on SLOs, observability and deployment speed.
+        - Kept services scalable through on-call rotations and alert tuning.
+        - Onboarded new engineers and interviewed candidates.
     - title: Senior Site Reliability Engineer - Dafiti
       period: 07/19 to 12/20
       contents:
-        - Modernized Dafiti's legacy architecture into cloud-based services.
-        - Ran automated Black Friday stress testing and acceptance tests.
-        - Scaled applications automatically based on custom metrics.
-        - Performed vendor management, including cloud providers and third-party tool providers.
-        - Implemented ArgoCD for application deployment and Istio as the service mesh.
+        - Modernized Dafiti's legacy architecture into cloud-based services, deployed with ArgoCD and connected through an Istio service mesh.
+        - Ran automated Black Friday stress and acceptance tests to validate the platform before peak traffic.
+        - Autoscaled applications on custom metrics.
+        - Managed vendors, including cloud and third-party tool providers.
     - title: Senior Software Engineer - TOTVS
       period: 04/17 to 07/19
       contents:
         - Moved the company's most important application, previously installed on-premises for each customer, to containers on Kubernetes, making it scalable and turning it into a SaaS product.
         - Built a platform that let users provision any type of service through a GraphQL API, later evolved into a set of Kubernetes controllers that provisioned systems from Kubernetes CRDs, before Crossplane existed.
-        - Deployed CI with Drone for chart and image publication, used Rancher for Kubernetes-based application deployment.
+        - Set up Drone CI to publish charts and images and used Rancher to deploy applications on Kubernetes.
     - title: Full Stack Software Engineer - Yebo
       period: 02/14 to 02/17
       contents:
