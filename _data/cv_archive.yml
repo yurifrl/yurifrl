@@ -1,0 +1,69 @@
+# Ideas removed from cv.yml, kept for reference. NOT published:
+# nothing in pages/ reads site.data.cv_archive.
+# Saved 2026-11-19 during the Staff Platform Engineer retarget (commit fef4049).
+
+summaries:
+  - title: Staff Engineer
+    content: "Staff engineer working across software engineering and reliability, with impact across product, SRE and engineering teams and no direct reports. At Flutter Brazil, built the company's internal AI agent platform and the agentic tooling teams use day to day, led incident response through the 2026 World Cup, and cut cluster cost 37% while absorbing a 9.7x traffic peak. 15 years of production backend and platform work in Elixir, Go, Postgres, Kafka and Kubernetes, including moving legacy systems forward in incremental steps."
+
+main_items:
+  - title: AI Platform Engineering
+    content: Open-source author of Tennon, a Kubernetes-native control plane for MCP servers that keeps credentials away from agents and adds human-in-the-loop approvals, alongside the internal AI agent platform built at Flutter Brazil.
+
+bullets:
+  - role: "Staff Site Reliability Engineer - Flutter Brazil"
+    items:
+      - "Built AI Hub, the company's internal AI agent platform, on a dedicated AWS EKS cluster. Dozens of agents and MCP servers run as Kubernetes pods declared in YAML, each with its own memory, tools and policies, built on Google ADK and delegating to each other over the A2A protocol."
+      - "Moved teams to agentic, test-driven delivery: AI-assisted testing is part of the standard workflow, and teams use the load-testing platform to scope projects before building them. Worked across product, SRE and engineering teams with no direct reports."
+      - "Cut the delivery pipeline from about 30 minutes to 5-10 minutes through Docker build and pipeline optimization, with caching and runners run locally, so teams deploy more often."
+      - "Connected AI Hub to the data lake and Slack so product and business teams query company data in natural language under per-user OAuth, for security and audit."
+      - "Started the AI Hub Gateway, which now routes every LLM call in the company: cost tracking per project, agent and user, PII and prompt-injection guardrails, and daily spend limits across OpenAI, Anthropic, AWS Bedrock and OpenRouter. The platform team took it forward from there."
+      - "Led right-sizing and cost optimization of the production Kubernetes cluster ahead of the 2026 World Cup, doing capacity planning from real usage to set CPU and memory requests and limits: 62% fewer nodes, 37% lower monthly cost, and a 9.7x traffic peak absorbed (~15x more capacity per unit of cost)."
+      - "Built an AI right-sizing agent that turns real usage into CPU/memory recommendations."
+      - "Built the Athena-backed cost APIs (Python, FastAPI, boto3) for the internal FinOps Hub, fixing fee, tax and discount attribution that had left about 72% of a month's AWS spend unattributed."
+      - "Built an agent-based test platform in Python: agents watch pull requests, suggest which tests to run and execute them, so testing follows each change instead of a fixed suite."
+      - "Built Guru, a Python multi-agent test generator (LangGraph/DeepAgents, FastAPI, ARQ/Redis, Postgres): 10 specialist agents read each service's SLIs, query Prometheus and open draft PRs with stronger k6 load tests, behind a no-LLM evidence gate, a reviewer agent that vetoes destructive changes and 380+ tests. Generated 22 PRs across services in its first week."
+      - "Designed and ran World Cup hypercare across 90+ matches: war room, roles, runbooks, dashboards and escalation paths, plus a connected-users vs historical-curve chart for operators. Held the platform through a record 200,000 concurrent users (116 EKS nodes) in Brazil vs Haiti."
+      - "Built Showtime, a live streaming tool that broadcast World Cup matches with real-time metrics overlaid on the stream."
+      - "Led incident response and blameless postmortems through the World Cup, with 61 incidents tracked in incident.io across the tournament and 29 of them inside match war-room windows. Took on-call for a Kafka consumer-lag incident on the ledger cluster that hit settlement and sports services, and traced it to asymmetric broker saturation with CloudWatch. Built Incident Review Admin, which prepares recurring reviews with automated slides, action-item follow-up and AI-assisted investigation."
+      - "Built the company's SLO and incident-response practice and hosted a weekly incident-learning session for engineering."
+      - "Led the Watch Tower portal and the main war rooms for large-scale event operations."
+  - role: "Senior Site Reliability Engineer - CloudWalk"
+    items:
+      - "Migrated Postgres databases between providers with zero downtime and no data loss."
+      - "Created an internal CLI that runs every company application locally in an environment as close to production as possible."
+      - "Kept services within their SLOs through on-call, incident management, root cause analysis and preventative fixes."
+  - role: "Senior Software Engineer - Telnyx"
+    items:
+      - "Owned public REST APIs and their technical documentation."
+      - "Kept services scalable through on-call rotations and alert tuning."
+      - "Onboarded new engineers and interviewed candidates."
+  - role: "Senior Site Reliability Engineer - Dafiti"
+    items:
+      - "Autoscaled applications on custom metrics."
+      - "Managed vendors, including cloud and third-party tool providers."
+  - role: "Senior Software Engineer - TOTVS"
+    items:
+      - "Set up Drone CI to publish charts and images and used Rancher to deploy applications on Kubernetes."
+
+projects:
+    - title: Tasks (tk)
+      link: https://github.com/nsxbet/tasks
+      content: Local-first issue tracker with dependency chains, built in TypeScript on Bun and designed for both humans and AI agents. Hexagonal architecture with swappable storage (git-committable JSON files, SQLite, PostgreSQL), a single self-contained `tk` binary distributed through Homebrew, a terminal UI with list, kanban and dependency-graph views, and a JSON/NDJSON surface so agents can claim ready work and watch for issue changes.
+    - title: nixos
+      link: https://github.com/yurifrl/nixos
+      content: "NixOS flake that provisions and runs my VMs on DigitalOcean (Terraform) and Proxmox. The CI/CD pipeline is the core: a GitHub Actions workflow joins the tailnet and deploys with deploy-rs, so a change rebuilds and switches the running system in under 6 minutes end to end, with no full image deploy. Declarative, self-updating through Renovate, secrets from 1Password, and set up to be friendly to AI agents."
+    - title: recorder
+      content: "Local-first macOS activity recorder in Rust (about 27k lines, 10 crates) with on-device speech recognition (Parakeet and Whisper via ONNX Runtime), pluggable ASR and LLM providers, AES-256-GCM encrypted storage, and a gRPC daemon with TUI and CLI clients."
+    - title: tiltclone
+      content: "Rust dev-workflow orchestrator in the style of Tilt (about 20k lines, 10 crates): BuildKit builds with content-addressed caching, Kubernetes and Compose drivers, live update, WASM plugins (Extism) and git-worktree preview deploys."
+    - title: Tilt fork
+      link: https://github.com/NSXBet/tilt
+      content: "Go fork of Tilt adding multi-worktree parallel development (per-worktree Tiltfile runs, serve-port registry, gateway), Apple container builds loaded straight into the cluster node with no registry push, and a shared secrets layer, shipped through its own release pipeline."
+
+# Drafts that were proposed but declined, kept as ideas.
+declined_drafts:
+  - why: "Removed by Yuri; Wiz and LGPD not backed by notes"
+    content: "Led SRE contributions to security assessments with Deloitte covering NIST guidance and LGPD requirements, and implemented assessment-driven improvements using Wiz and internal tools."
+  - why: "Declined; self-hosted vLLM (BAAI/bge-m3, CPU) embedding service for Argus agent memory"
+    content: "Self-hosted a vLLM inference service on EKS serving the BAAI/bge-m3 embedding model for agent memory."
