@@ -21,6 +21,11 @@ exclude:
   - README.md
   - LICENSE
   - docker-compose.yml
+  - .agents
+  - .claude
+  - Dockerfile
+  - TODO.md
+  - skills-lock.json
 
 post_layout: post
 page_layout: default

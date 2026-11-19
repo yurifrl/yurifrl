@@ -11,6 +11,4 @@ Gemfile
 Gemfile.lock
 node_modules
 package.json
-.agents/
-.claude/
 skills-lock.json
