@@ -34,8 +34,17 @@ permalink: /cv/
     <h3 class="sub-title">{{ data.proficiencies.title }}</h3>
 
     <section class="content-section-data">
-      {% for item in data.proficiencies.items %}
-      {{ item }}{% if forloop.last != true %},{% endif %}
+      {% assign min_weight = data.proficiencies.min_weight | default: 1 %}
+      {% comment %} Highest weight first; equal weights keep their cv.yml order. {% endcomment %}
+      {% assign skills = "" | split: "" %}
+      {% for w in (1..10) reversed %}
+        {% if w >= min_weight %}
+          {% assign tier = data.proficiencies.items | where: "weight", w %}
+          {% assign skills = skills | concat: tier %}
+        {% endif %}
+      {% endfor %}
+      {% for item in skills %}
+      {{ item.title }}{% if forloop.last != true %},{% endif %}
       {% endfor %}
     </section>
   </section>
@@ -47,6 +56,7 @@ permalink: /cv/
     {% for item in data.previous.items %}
     <section class="content-section-data">
       <h4><span class="highlight">{{ item.title}}</span> {{ item.period }}</h4>
+      {% if item.context %}<p class="context"><em>{{ item.context }}</em></p>{% endif %}
       <ul class="item">
         {% for content in item.contents %}
         <li>- {{content}}</li>
