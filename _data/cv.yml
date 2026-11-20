@@ -1,6 +1,8 @@
 title: Staff Platform Engineer
 location: Brazil
-content: "Staff Platform Engineer with 15 years building the infrastructure production systems and AI agents run on: Kubernetes (AWS EKS), Terraform, Go and GitOps. At Flutter Brazil, built the company's internal AI agent platform and load-testing platform, led incident response through the 2026 World Cup, and cut cluster cost 37% while absorbing a 9.7x World Cup traffic peak."
+email: yuri.cv@proton.me
+linkedin: https://www.linkedin.com/in/yurifrl
+content: "Staff Platform Engineer with 15 years building the infrastructure production systems and AI agents run on: Kubernetes (AWS EKS), Go and GitOps. At Flutter Brazil, built the company's internal AI agent platform and load-testing platform, led incident response through the 2026 World Cup, and cut cluster cost 37% while absorbing a 9.7x World Cup traffic peak."
 
 proficiencies:
   title: Skills
@@ -10,13 +12,9 @@ proficiencies:
   items:
     - title: "Kubernetes"
       weight: 10
-    - title: "AWS (EKS)"
-      weight: 10
     - title: "AI Agents"
       weight: 9
     - title: "Go"
-      weight: 9
-    - title: "Terraform"
       weight: 9
     - title: "Python (FastAPI, LangGraph/LangChain, pydantic, boto3, pytest)"
       weight: 8
@@ -96,6 +94,10 @@ proficiencies:
       weight: 2
     - title: "Quickwit"
       weight: 2
+    - title: "Terraform"
+      weight: 2
+    - title: "AWS (EKS)"
+      weight: 2
     - title: "Haskell"
       weight: 1
 
@@ -104,13 +106,23 @@ projects:
   items:
     - title: Tennon
       link: https://github.com/yurifrl/tennon
-      content: Open-source, Kubernetes-native control plane and proxy for MCP servers (Go, Helm, React). Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools. Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes). Part of a wider agents platform with an AgentTask custom resource and controller (Go) that runs coding agents as isolated Kubernetes pods and returns PRs.
+      contents:
+        - "Open-source, Kubernetes-native control plane and proxy for MCP servers (Go, Helm, React)."
+        - "Injects credentials server-side so agents never see secrets, enforces allow/ask/block policies with human-in-the-loop approvals, supports OIDC and workload identity, and turns OpenAPI and GraphQL specs into MCP tools."
+        - "Pluggable storage (SQLite, Postgres, Kubernetes CRDs) and runtimes (remote, Docker, Kubernetes)."
+        - "Part of a wider agents platform with an AgentTask custom resource and controller (Go) that runs coding agents as isolated Kubernetes pods and returns PRs."
     - title: nostos
       link: https://github.com/yurifrl/nostos
-      content: Open-source Go CLI (~24k lines, Charm TUI) that owns the bare-metal-to-cluster flow for Talos Linux home labs. Renders machine configs from 1Password references and mints a fresh Tailscale auth key on every render, so no secrets live in git. Builds multi-arch images, PXE-boots nodes, produces flashable images for zero-touch remote sites, installs Talos or Proxmox through a pluggable OS-image layer, builds signed guest-VM ISOs, and bootstraps Cilium, ArgoCD and External Secrets on a fresh cluster.
+      contents:
+        - "Open-source Go CLI (~24k lines, Charm TUI) that owns the bare-metal-to-cluster flow for Talos Linux home labs."
+        - "Renders machine configs from 1Password references and mints a fresh Tailscale auth key on every render, so no secrets live in git."
+        - "Builds multi-arch images, PXE-boots nodes, produces flashable images for zero-touch remote sites, installs Talos or Proxmox through a pluggable OS-image layer, builds signed guest-VM ISOs, and bootstraps Cilium, ArgoCD and External Secrets on a fresh cluster."
     - title: Home Kubernetes platform (home-systems)
       link: https://github.com/yurifrl/home-systems
-      content: "GitOps repo for a 7-node Talos Linux cluster plus an offsite Raspberry Pi that joins over Tailscale. Everything is declarative: 63 ArgoCD applications behind Istio ambient mesh, SLOs as code with Pyrra, and Crossplane for Proxmox VMs and GCP resources. Secrets come from 1Password through External Secrets, so none live in git."
+      contents:
+        - "GitOps repo for a 7-node Talos Linux cluster plus an offsite Raspberry Pi that joins over Tailscale."
+        - "Everything is declarative: 63 ArgoCD applications behind Istio ambient mesh, SLOs as code with Pyrra, and Crossplane for Proxmox VMs and GCP resources."
+        - "Secrets come from 1Password through External Secrets, so none live in git."
 
 previous:
   title: Professional Experience
@@ -119,16 +131,16 @@ previous:
       period: 02/2024 to Present
       context: "Brazilian business of Flutter Entertainment, the world's largest online sports entertainment company, with about 1.5M monthly active users and peaks of about 200,000 concurrent users during the 2026 World Cup."
       contents:
-        - Built AI Hub, the company's internal AI agent platform on a dedicated AWS EKS cluster: dozens of agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating to each other over A2A, and teams query the data lake from Slack in natural language under per-user OAuth. Started the AI Hub Gateway that now routes every LLM call in the company, with per-project cost tracking, PII and prompt-injection guardrails and daily spend limits across OpenAI, Anthropic, AWS Bedrock and OpenRouter.
+        - "Built AI Hub, the company's internal AI agent platform on a dedicated AWS EKS cluster: dozens of agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating to each other over A2A, and teams query the data lake from Slack in natural language under per-user OAuth. Started the AI Hub Gateway that now routes every LLM call in the company, with per-project cost tracking, PII and prompt-injection guardrails and daily spend limits across OpenAI, Anthropic, AWS Bedrock and OpenRouter."
         - Moved teams to agentic, test-driven delivery and cut the delivery pipeline from about 30 minutes to 5–10 minutes through Docker build and pipeline optimization, so teams deploy more often and scope projects with load tests before building them.
         - Championed moving day-to-day AI coding usage from Claude to GLM 5.3 through AI Hub, at about a tenth of the per-token cost for most work, keeping frontier models for the cases that need them.
         - Built Babel Fish, a production Slack translation bot that lets Brazilian and international Flutter teams work in their own languages by reacting with a flag. It runs in Go on AWS Bedrock with a cross-region fallback chain across Claude models, a Bedrock Guardrail for PII redaction, promptfoo evals and Prometheus/Grafana metrics.
-        - Led right-sizing of the production Kubernetes cluster ahead of the 2026 World Cup, setting CPU and memory from real usage with an AI right-sizing agent I built: 62% fewer nodes, 37% lower monthly cost and a 9.7x traffic peak absorbed. Built the Athena-backed cost APIs (Python, FastAPI, boto3) for the FinOps Hub, fixing attribution that had left about 72% of a month's AWS spend unattributed.
-        - Built two Python agent testing systems: a platform where agents watch pull requests, pick the tests to run and execute them; and Guru (LangGraph/DeepAgents, FastAPI, ARQ/Redis, Postgres), whose 10 specialist agents read each service's SLIs, query Prometheus and open draft PRs with stronger k6 load tests behind a no-LLM evidence gate and a reviewer agent, generating 22 PRs in its first week.
-        - Built e2ai, an autonomous end-to-end testing control plane (Go API, TypeScript agent runner, Playwright): a governed roster of agents (navigator, vision judge, edge hunter, flake analyst) runs declarative test plans against web and mobile apps and posts verdicts with evidence on PRs; every heal or quarantine proposal is human-approved.
+        - "Led right-sizing of the production Kubernetes cluster ahead of the 2026 World Cup, setting CPU and memory from real usage with an AI right-sizing agent I built: 62% fewer nodes, 37% lower monthly cost and a 9.7x traffic peak absorbed. Built the Athena-backed cost APIs (Python, FastAPI, boto3) for the FinOps Hub, fixing attribution that had left about 72% of a month's AWS spend unattributed."
+        - "Built two Python agent testing systems: a platform where agents watch pull requests, pick the tests to run and execute them; and Guru (LangGraph/DeepAgents, FastAPI, ARQ/Redis, Postgres), whose 10 specialist agents read each service's SLIs, query Prometheus and open draft PRs with stronger k6 load tests behind a no-LLM evidence gate and a reviewer agent, generating 22 PRs in its first week."
+        - "Built e2ai, an autonomous end-to-end testing control plane (Go API, TypeScript agent runner, Playwright): a governed roster of agents (navigator, vision judge, edge hunter, flake analyst) runs declarative test plans against web and mobile apps and posts verdicts with evidence on PRs; every heal or quarantine proposal is human-approved."
         - Created and led the company's load-testing platform (41 services, 1,500+ published run reports), triggered from GitHub Actions, PR comments, a CLI or AI agents. Guardrails include staging-only by default, SRE review for production, org-membership checks and capped runner sizes. It exposed real breaking points and misattributed bottlenecks before World Cup traffic hit and is now a standard part of the developer workflow. Wrote the PR-comment bot's Python automation (plan rendering, sticky status comments, matrix expansion) with unit tests.
-        - Designed and ran World Cup hypercare across 90+ matches, leading the Watch Tower portal and the main war rooms: roles, runbooks, dashboards, escalation paths, and Showtime, a live stream of matches with real-time metrics overlaid. Held the platform through a record 200,000 concurrent users (116 EKS nodes) in Brazil vs Haiti.
-        - Built the company's SLO and incident-response practice: led incident response and blameless postmortems through the World Cup (61 incidents in incident.io, 29 inside match war rooms), hosted a weekly incident-learning session, and built Incident Review Admin for automated review slides, action-item follow-up and AI-assisted investigation.
+        - "Designed and ran World Cup hypercare across 90+ matches, leading the Watch Tower portal and the main war rooms: roles, runbooks, dashboards, escalation paths, and Showtime, a live stream of matches with real-time metrics overlaid. Held the platform through a record 200,000 concurrent users (116 EKS nodes) in Brazil vs Haiti."
+        - "Built the company's SLO and incident-response practice: led incident response and blameless postmortems through the World Cup (61 incidents in incident.io, 29 inside match war rooms), hosted a weekly incident-learning session, and built Incident Review Admin for automated review slides, action-item follow-up and AI-assisted investigation."
         - Ran a monthly platform forum with developers to collect pain points and suggestions; entire platform features were built from that feedback.
         - Automated the annual regulatory certification with an AI-driven process; the previous year it took dozens of people, and it now runs almost entirely on its own.
         - Introduced Crossplane so developers declare the infrastructure their application depends on alongside the application itself, removing hand-off tickets between teams.
@@ -136,7 +148,7 @@ previous:
       period: 11/2022 to 02/2024
       context: "Brazilian fintech behind InfinitePay, a payments platform for small merchants."
       contents:
-        - Owned deployment and operation of CloudWalk's blockchain ledger on Kubernetes in Google Cloud: a permissioned, Ethereum-compatible network settling InfinitePay receivables in the BRLC stablecoin. Ran it through peak growth after the migration to a network built for 500 transactions per second, 70x the previous capacity.
+        - "Owned deployment and operation of CloudWalk's blockchain ledger on Kubernetes in Google Cloud: a permissioned, Ethereum-compatible network settling InfinitePay receivables in the BRLC stablecoin. Ran it through peak growth after the migration to a network built for 500 transactions per second, 70x the previous capacity."
         - Built CI/CD pipelines across multi-cluster Kubernetes, with all infrastructure as code in Terraform, Helm and ArgoCD.
         - Designed the observability stack (Prometheus, Quickwit, OpenTelemetry) for logging, monitoring and alerting, plus system status metrics that gave development teams actionable performance insight.
     - title: Senior Software Engineer - Telnyx
@@ -150,7 +162,7 @@ previous:
       context: "One of Latin America's largest online fashion retailers."
       contents:
         - Modernized the legacy architecture of Dafiti's e-commerce platform (4M+ active customers) into cloud-based microservices on Kubernetes on AWS, deployed with ArgoCD and connected through an Istio service mesh.
-        - Prepared the platform for Black Friday: application sizing, automated load and acceptance testing, and SLO work. Refactored critical workflows such as checkout to be more test-friendly, so tests could run as close to production behavior as possible.
+        - "Prepared the platform for Black Friday: application sizing, automated load and acceptance testing, and SLO work. Refactored critical workflows such as checkout to be more test-friendly, so tests could run as close to production behavior as possible."
     - title: Senior Software Engineer - TOTVS
       period: 04/2017 to 07/2019
       context: "Brazil's largest enterprise software (ERP) company."
@@ -160,7 +172,7 @@ previous:
     - title: Full Stack Software Engineer - Yebo
       period: 02/2014 to 02/2017
       contents:
-        - Built and ran a large-scale e-commerce backend platform: customers plugged in their own frontends while the platform handled all the business rules and features an online store needs.
+        - "Built and ran a large-scale e-commerce backend platform: customers plugged in their own frontends while the platform handled all the business rules and features an online store needs."
     - title: Freelance Web Developer
       period: 2011 to 2014
       contents:

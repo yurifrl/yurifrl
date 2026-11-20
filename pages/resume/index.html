@@ -6,75 +6,96 @@ permalink: /cv/
 <a class="back no-print" href="/">&lt;-- back</a>
 
 {% assign data = site.data.cv %}
+
 <div class="cv">
-  <h1 class="title">Yuri F. Lima</h1>
+  <header class="cv-header">
+    <h1 class="name">Yuri F. Lima</h1>
+    <p class="role">{{ data.title }}</p>
 
-  <section class="contact">
-    <p>{{ data.location }}</p>
-    <a href="mailto:yuri.cv@proton.me?Subject=CV Contact" target="_top">yuri.cv@proton.me</a>
+    <ul class="contact">
+      {% if data.location %}
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+        {{ data.location }}
+      </li>
+      {% endif %}
+      {% if data.email %}
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <a href="mailto:{{ data.email }}?Subject=CV Contact" target="_top">{{ data.email }}</a>
+      </li>
+      {% endif %}
+      {% if data.linkedin %}
+      <li>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2zM8.3 18.3H5.7V9.8h2.6v8.5zM7 8.6a1.5 1.5 0 1 1 0-3.1 1.5 1.5 0 0 1 0 3.1zm11.3 9.7h-2.6v-4.1c0-1 0-2.300-1.400-2.300s-1.600 1.100-1.600 2.200v4.200h-2.600V9.800h2.500v1.200a2.800 2.800 0 0 1 2.500-1.400c2.700 0 3.200 1.800 3.200 4.100v4.600z"/></svg>
+        <a href="{{ data.linkedin }}">{{ data.linkedin | remove: "https://" | remove: "www." }}</a>
+      </li>
+      {% endif %}
+    </ul>
+  </header>
+
+  <section class="cv-section">
+    <h2 class="section-title">Summary</h2>
+    <p>{{ data.content }}</p>
   </section>
 
-  <section class="content-section">
-    <h3 class="sub-title center">{{ data.title }}</h3>
+  <section class="cv-section">
+    <h2 class="section-title">{{ data.proficiencies.title }}</h2>
 
-    <section class="content-section-data">
-      <p>{{ data.content }}</p>
-    </section>
+    {% assign min_weight = data.proficiencies.min_weight | default: 1 %}
+    {% comment %} Highest weight first; equal weights keep their cv.yml order. {% endcomment %}
+    {% assign skills = "" | split: "" %}
+    {% for w in (1..10) reversed %}
+      {% if w >= min_weight %}
+        {% assign tier = data.proficiencies.items | where: "weight", w %}
+        {% assign skills = skills | concat: tier %}
+      {% endif %}
+    {% endfor %}
 
-    <section class="content-section-data">
-      {% for item in data.main_items %}
-      <ul>
-        <li><span class="highlight">- {{ item.title }}</span> {{ item.content }}</li>
-      </ul>
-      {% endfor %}
-    </section>
+    <p>{{ skills | map: "title" | join: ", " }}</p>
   </section>
 
-  <section class="content-section">
-    <h3 class="sub-title">{{ data.proficiencies.title }}</h3>
-
-    <section class="content-section-data">
-      {% assign min_weight = data.proficiencies.min_weight | default: 1 %}
-      {% comment %} Highest weight first; equal weights keep their cv.yml order. {% endcomment %}
-      {% assign skills = "" | split: "" %}
-      {% for w in (1..10) reversed %}
-        {% if w >= min_weight %}
-          {% assign tier = data.proficiencies.items | where: "weight", w %}
-          {% assign skills = skills | concat: tier %}
-        {% endif %}
-      {% endfor %}
-      {% for item in skills %}
-      {{ item.title }}{% if forloop.last != true %},{% endif %}
-      {% endfor %}
-    </section>
-  </section>
-
-
-  <section class="content-section">
-    <h3 class="sub-title">{{ data.previous.title }}</h3>
+  <section class="cv-section">
+    <h2 class="section-title">{{ data.previous.title }}</h2>
 
     {% for item in data.previous.items %}
-    <section class="content-section-data">
-      <h4><span class="highlight">{{ item.title}}</span> {{ item.period }}</h4>
-      {% if item.context %}<p class="context"><em>{{ item.context }}</em></p>{% endif %}
-      <ul class="item">
+    {% comment %} cv.yml titles are "Role - Company"; the company part is optional. {% endcomment %}
+    {% assign parts = item.title | split: " - " %}
+    <article class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">{{ parts[0] }}</h3>
+        <span class="entry-meta">{{ item.period | replace: " to ", " – " }}</span>
+      </div>
+      {% if parts[1] %}<p class="entry-sub">{{ parts[1] }}</p>{% endif %}
+      {% if item.context %}<p class="entry-context">{{ item.context }}</p>{% endif %}
+      <ul class="bullets">
         {% for content in item.contents %}
-        <li>- {{content}}</li>
+        <li>{{ content }}</li>
         {% endfor %}
       </ul>
-    </section>
+    </article>
     {% endfor %}
   </section>
 
   {% if data.projects %}
-  <section class="content-section">
-    <h3 class="sub-title">{{ data.projects.title }}</h3>
+  <section class="cv-section">
+    <h2 class="section-title">{{ data.projects.title }}</h2>
 
     {% for item in data.projects.items %}
-    <section class="content-section-data">
-      <h4><span class="highlight">{{ item.title }}</span>{% if item.link %} <a href="{{ item.link }}">{{ item.link | remove: "https://" }}</a>{% endif %}</h4>
-      <p>{{ item.content }}</p>
-    </section>
+    <article class="entry">
+      <div class="entry-head">
+        <h3 class="entry-title">{{ item.title }}</h3>
+        {% if item.link %}<a class="entry-meta" href="{{ item.link }}">{{ item.link | remove: "https://" }}</a>{% endif %}
+      </div>
+      {% if item.content %}<p>{{ item.content }}</p>{% endif %}
+      {% if item.contents %}
+      <ul class="bullets">
+        {% for content in item.contents %}
+        <li>{{ content }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </article>
     {% endfor %}
   </section>
   {% endif %}
