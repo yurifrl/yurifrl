@@ -97,8 +97,6 @@ proficiencies:
       weight: 2
     - title: "AWS (EKS)"
       weight: 2
-    - title: "Haskell"
-      weight: 1
 
 projects:
   title: Projects
