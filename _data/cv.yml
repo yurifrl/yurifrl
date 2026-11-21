@@ -145,7 +145,7 @@ previous:
       context: "Brazilian business of Flutter Entertainment, the world's largest online sports entertainment company, with about 1.5M monthly active users and peaks of about 200,000 concurrent users during the 2026 World Cup."
       contents:
         - "Tech lead of the SRE team, setting technical direction for the platform, reliability and AI work below."
-        - "Build the tools that make developers faster: CLIs and the AI coding harness they work in, including guardrails, async subagent orchestration and workflow extensions for pi and Oh My Pi, shared agent skills and Claude Code plugins."
+        - "Build the tools that make 150+ developers faster: CLIs and the AI coding harness they work in, including guardrails, async subagent orchestration and workflow extensions for pi and Oh My Pi, shared agent skills and Claude Code plugins."
         - "Built AI Hub, the internal AI agent platform: dozens of agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating to each other over A2A; teams query the data lake from Slack in natural language under per-user OAuth."
         - "Started the AI Hub Gateway, which now routes every LLM call in the company across OpenAI, Anthropic, AWS Bedrock and OpenRouter, with per-project cost tracking, PII and prompt-injection guardrails, and daily spend limits."
         - "Led right-sizing of the production Kubernetes cluster ahead of the 2026 World Cup, setting CPU and memory from real usage with an AI right-sizing agent: 62% fewer nodes, 37% lower monthly cost and a 9.7x traffic peak absorbed."
