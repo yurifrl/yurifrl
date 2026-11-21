@@ -4,7 +4,7 @@ email: contact+cv@yurifrl.dev
 linkedin: https://www.linkedin.com/in/yurifrl
 github: https://github.com/yurifrl
 languages: "English (fluent), Portuguese (native)"
-content: "Staff Platform Engineer with 15 years building the infrastructure production systems and AI agents run on: Kubernetes (AWS EKS), Crossplane, Go and GitOps. At Flutter Brazil, tech lead of the SRE team: built the internal AI agent platform and the gateway behind every LLM call in the company, led the load-testing platform and World Cup incident response, and cut cluster cost 37% while absorbing a 9.7x traffic peak."
+content: "Staff Platform Engineer with 15 years building the infrastructure production systems and AI agents run on: Kubernetes (AWS EKS), Crossplane, Go and GitOps. My passion is developer tooling: CLIs, AI coding harness extensions, plugins and curated skills that make developers' workflows easier and faster. At Flutter Brazil, tech lead of the SRE team: built the internal AI agent platform and the gateway behind every LLM call in the company, led the load-testing platform and World Cup incident response, and cut cluster cost 37% while absorbing a 9.7x traffic peak."
 
 proficiencies:
   title: Skills
@@ -12,6 +12,8 @@ proficiencies:
   items:
     - title: "Kubernetes"
       weight: 10
+    - title: "Developer Experience"
+      weight: 9
     - title: "AI Agents"
       weight: 9
     - title: "Go"
@@ -38,6 +40,10 @@ proficiencies:
       weight: 7
     - title: "SLOs"
       weight: 7
+    - title: "Developer Tooling"
+      weight: 8
+    - title: "Claude Code"
+      weight: 8
     - title: "MCP"
       weight: 7
     - title: "LangGraph"
@@ -104,6 +110,13 @@ proficiencies:
 projects:
   title: Projects
   items:
+    - title: Developer and AI harness tooling
+      link: https://github.com/yurifrl/pi-hub
+      contents:
+        - "Curated library of 200 agent skills and 91 subagents, shared across Claude Code, Codex, pi and Oh My Pi from a single source."
+        - "pi-hub: local supervision platform for coding agents; a terminal board, web console and agent widget open on what needs you across every running session."
+        - "pi-yuri-extensions: shared module runtime for pi and Oh My Pi, alongside pi-diff (browser diff review whose comments feed back to the agent), pi-model-picker and Claude Code plugins written as TypeScript hook modules."
+        - "cly: Go CLI (Charm TUI) of developer utilities, including a Claude Code statusline for context, model and cost."
     - title: Tennon
       link: https://github.com/yurifrl/tennon
       contents:
@@ -132,6 +145,7 @@ previous:
       context: "Brazilian business of Flutter Entertainment, the world's largest online sports entertainment company, with about 1.5M monthly active users and peaks of about 200,000 concurrent users during the 2026 World Cup."
       contents:
         - "Tech lead of the SRE team, setting technical direction for the platform, reliability and AI work below."
+        - "Build the tools that make developers faster: CLIs and the AI coding harness they work in, including guardrails, async subagent orchestration and workflow extensions for pi and Oh My Pi, shared agent skills and Claude Code plugins."
         - "Built AI Hub, the internal AI agent platform: dozens of agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating to each other over A2A; teams query the data lake from Slack in natural language under per-user OAuth."
         - "Started the AI Hub Gateway, which now routes every LLM call in the company across OpenAI, Anthropic, AWS Bedrock and OpenRouter, with per-project cost tracking, PII and prompt-injection guardrails, and daily spend limits."
         - "Led right-sizing of the production Kubernetes cluster ahead of the 2026 World Cup, setting CPU and memory from real usage with an AI right-sizing agent: 62% fewer nodes, 37% lower monthly cost and a 9.7x traffic peak absorbed."
