@@ -61,6 +61,13 @@ permalink: /cv/
     <p>{{ skills | map: "title" | join: ", " }}</p>
   </section>
 
+  {% if data.languages %}
+  <section class="cv-section">
+    <h2 class="section-title">Languages</h2>
+    <p>{{ data.languages }}</p>
+  </section>
+  {% endif %}
+
   <section class="cv-section">
     <h2 class="section-title">{{ data.previous.title }}</h2>
 
