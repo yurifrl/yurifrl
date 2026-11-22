@@ -76,6 +76,14 @@ proficiencies:
       weight: 6
     - title: "Linux"
       weight: 6
+    - title: "Security (secrets management, OIDC, least-privilege IAM)"
+      weight: 6
+    - title: "Networking (Istio, Envoy, Cilium)"
+      weight: 6
+    - title: "Distributed Systems"
+      weight: 6
+    - title: "Grafana"
+      weight: 6
     - title: "Crossplane"
       weight: 5
     - title: "Istio"
@@ -144,21 +152,23 @@ previous:
       period: 02/2024 to Present
       context: "Brazilian business of Flutter Entertainment, the world's largest online sports entertainment company, with about 1.5M monthly active users and peaks of about 200,000 concurrent users during the 2026 World Cup."
       contents:
-        - "Tech lead of the SRE team, setting technical direction for the platform, reliability and AI work below."
-        - "Build the tools that make 150+ developers faster: CLIs and the AI coding harness they work in, including guardrails, async subagent orchestration and workflow extensions for pi and Oh My Pi, shared agent skills and Claude Code plugins."
+        - "Tech lead of the SRE team: set technical direction through design docs (RFCs) and design reviews, and mentor 11 developers across the platform, reliability and AI work below."
+        - "Own developer experience for 150+ developers: build the CLIs and the AI coding harness they work in, including guardrails, async subagent orchestration and workflow extensions for pi and Oh My Pi, shared agent skills and Claude Code plugins."
         - "Built AI Hub, the internal AI agent platform: dozens of agents and MCP servers run as Kubernetes pods declared in YAML, built on Google ADK and delegating to each other over A2A; teams query the data lake from Slack in natural language under per-user OAuth."
-        - "Started the AI Hub Gateway, which now routes every LLM call in the company across OpenAI, Anthropic, AWS Bedrock and OpenRouter, with per-project cost tracking, PII and prompt-injection guardrails, and daily spend limits."
+        - "Started the AI Hub Gateway, which now routes every LLM call in the company across OpenAI, Anthropic, AWS Bedrock and OpenRouter, with per-project cost tracking, rate limiting, provider failover, PII and prompt-injection guardrails, and daily spend limits."
         - "Led right-sizing of the production Kubernetes cluster ahead of the 2026 World Cup, setting CPU and memory from real usage with an AI right-sizing agent: 62% fewer nodes, 37% lower monthly cost and a 9.7x traffic peak absorbed."
         - "Wrote the Athena-backed cost APIs (Python, FastAPI, boto3) for the FinOps Hub, fixing attribution that had left about 72% of a month's AWS spend unattributed."
         - "Designed and ran World Cup hypercare across 90+ matches, leading the Watch Tower portal and the main war rooms: roles, runbooks, dashboards, escalation paths, and Showtime, a live stream of matches with real-time metrics overlaid. Held the platform through a record 200,000 concurrent users (116 EKS nodes) in Brazil vs Haiti."
         - "Created and led the load-testing platform (41 services, 1,500+ published run reports), triggered from GitHub Actions, PR comments, a CLI or AI agents, staging-only by default with SRE review for production. It exposed real breaking points and misattributed bottlenecks before peak traffic hit and is now a standard part of the developer workflow."
         - "Set up the SLO and incident-response practice: led incident response and blameless postmortems through the tournament (61 incidents in incident.io, 29 inside match war rooms), hosted a weekly incident-learning session, and built Incident Review Admin for automated review slides, action-item follow-up and AI-assisted investigation."
-        - "Rolled out an AI on-call agent that reacts to Grafana OnCall alerts (~900 a month), troubleshoots them on its own through tool-calling over kubectl, Prometheus metrics, logs and runbooks, and hands on-call developers a root-cause analysis to start from."
+        - "Rolled out an AI on-call agent that reacts to Grafana OnCall alerts (~900 a month), troubleshoots them on its own through tool-calling over kubectl, Prometheus metrics, logs, traces and runbooks, and hands on-call developers a root-cause analysis to start from."
         - "Created two agent-driven testing systems: Guru (LangGraph, FastAPI, Redis, Postgres), whose 10 specialist agents read service SLIs and open draft PRs with stronger k6 load tests (22 PRs in its first week); and e2ai (Go, TypeScript, Playwright), whose agents run end-to-end test plans on web and mobile apps and post verdicts with evidence on PRs."
         - Cut the delivery pipeline from about 30 minutes to 5–10 minutes through Docker build and pipeline optimization, so teams deploy more often.
         - "Moved day-to-day AI usage from Claude to GLM 5.3 through AI Hub; GLM now serves ~78% of gateway traffic at about a tenth of the per-token cost, with frontier models kept for the work that needs them."
         - "Built Babel Fish, a production Slack translation bot (Go, AWS Bedrock) that lets Brazilian and international teams work in their own languages by reacting with a flag, with cross-region model fallback, PII redaction and promptfoo evals."
-        - Introduced Crossplane so developers declare their application's infrastructure next to the app itself; adopted by 200+ services, removing hand-off tickets between teams.
+        - "Introduced Crossplane as the self-service golden path for infrastructure: developers declare IAM roles (IRSA, least privilege), secrets, S3, queues and databases next to the app itself; adopted by 200+ services, removing hand-off tickets between teams."
+        - "Rolled out progressive delivery with Argo Rollouts and Istio: canary releases for about 30 services."
+        - "Led the team's EKS cluster upgrades (staging, tooling and production, 1.31 to 1.35) through a repeatable process of deprecated-API scans, in-flight monitoring and post-upgrade smoke tests; disaster recovery with Velero backups, restore dry-runs and multi-AZ workloads."
         - "Turned the annual regulatory certification, which took dozens of people the year before, into an AI-driven process that runs almost entirely on its own."
         - Ran a monthly platform forum with developers to collect pain points; whole platform features, such as multi-branch deploys in our development platform, came directly from it.
     - title: Senior Site Reliability Engineer - CloudWalk
@@ -185,7 +195,7 @@ previous:
       context: "Brazil's largest enterprise software (ERP) company."
       contents:
         - Moved the company's flagship application from per-customer on-premises installs to containers on Kubernetes, turning it into a scalable SaaS product.
-        - Built a platform that let users provision any type of service through a GraphQL API, later evolved into a set of Kubernetes controllers that provisioned systems from Kubernetes CRDs, before Crossplane existed.
+        - Built a platform that let users provision any type of service through a GraphQL API, later evolved into a set of Kubernetes controllers (operators) that provisioned systems from Kubernetes CRDs, before Crossplane existed.
     - title: Full Stack Software Engineer - Yebo
       period: 2011 to 02/2017
       contents:
