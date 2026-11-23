@@ -1,33 +1,65 @@
-# This is the data for my blog
+<div align="center">
 
-It is automatically transformed by [Jekyll](http://github.com/mojombo/jekyll)
-into a static site whenever I push this repository to GitHub.
+# Hey, I'm Yuri 👋
 
-I was tired of having my blog posts end up in a database off on some remote
-server. That is backwards. I've lost valuable posts that way. I want to author
-my posts locally in Textile or Markdown. My blog should be easily stylable and
-customizable any way I please. It should take care of creating a feed for me.
-And most of all, my site should be stored on GitHub so that I never lose data
-again.
+**Staff Platform Engineer** — Kubernetes, AI Agents, Developer Tooling
 
-## License
+15 years building the infrastructure that production systems and AI agents run on • Brazil
 
-The following directories and their contents are Copyright Yuri Freire Lima.
-You may not reuse anything therein without my permission:
+[![Site](https://img.shields.io/badge/yurifrl.dev-000?style=for-the-badge&logo=jekyll&logoColor=white)](https://yurifrl.dev)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/yurifrl)
 
-* _posts/
-* assets/images/
+</div>
 
-All other directories and files are MIT Licensed. Feel free to use the HTML and
-CSS as you please. If you do use them, a link back to
-http://github.com/yurifrl/yurifrl.github.io would be appreciated, but is not required.
+---
 
+### 👨‍💻 What I Do
 
-## This is a fork
-this is a mix from [Getmicah Blog](https://github.com/getmicah/blog)
-and [Tom Preston-Werner](https://github.com/mojombo/mojombo.github.io)
+I build platforms: Kubernetes, GitOps, and the gateways and control planes that AI agents run behind. Currently **tech lead of the SRE team @ [Flutter Brazil](https://github.com/NSXBet)**, where I built the internal AI agent platform and the gateway behind every LLM call in the company.
 
-examples to follow https://github.com/jglovier/resume-template
+What I enjoy most is developer tooling: CLIs, coding-agent extensions, plugins and skills that make a workflow shorter. Most of what's below started as something I wanted for myself.
 
-## Markdown
-[Kramdown](http://kramdown.gettalong.org/syntax.html)
+### 🏠 The Homelab
+
+My home cluster is run like production, and it's all public in **[home-systems](https://github.com/yurifrl/home-systems)**:
+
+- 7 Talos Linux nodes plus an offsite Raspberry Pi that joins over Tailscale
+- 63 ArgoCD applications behind an Istio ambient mesh, with SLOs as code (Pyrra)
+- Crossplane provisioning Proxmox VMs and GCP resources; secrets from 1Password via External Secrets, none in git
+- **[21 written postmortems](https://github.com/yurifrl/home-systems/tree/HEAD/.agents/postmortems)**, from an apiserver CRD-cache OOM to a Tailscale/Cilium endpoint recursion. Yes, for a homelab.
+
+### 🚀 Projects
+
+- 🏠 **[home-systems](https://github.com/yurifrl/home-systems)** — GitOps repo for the cluster above: Talos, ArgoCD, Istio, Crossplane, VictoriaMetrics, Longhorn.
+- ⛵ **[nostos](https://github.com/yurifrl/nostos)** — Go CLI (Charm TUI) that owns the bare-metal-to-cluster flow for Talos home labs: PXE boot, flashable images for zero-touch remote nodes, Talos or Proxmox installs.
+- ❄️ **[nixos](https://github.com/yurifrl/nixos)** — One flake for my NixOS machines: a Proxmox workstation VM that rebuilds itself, a FoundryVTT server and a Gatus status page, with Terraform, Tailscale and Cloudflare tunnels.
+- ⌨️ **[alt-tab](https://github.com/yurifrl/alt-tab)** — Keyboard-driven macOS window switcher in Swift: search, per-window color tags, multi-display. Signed, notarized and shipped through my own [Homebrew tap](https://github.com/yurifrl/homebrew-casks).
+- 🔌 **[Tennon](https://github.com/yurifrl/tennon)** — Kubernetes-native control plane and proxy for MCP servers. Credentials are injected server-side, so agents never hold a secret.
+- 🎙️ **[MicSync](https://github.com/yurifrl/MicSync)** — Menu-bar app that keeps one mic state across Google Meet and Slack huddles. Push-to-talk works from a gamepad or a phone.
+- 🧰 **[cly](https://github.com/yurifrl/cly)** — Go CLI of day-to-day utilities with Charm TUIs, including a Claude Code statusline.
+- 🏙️ **[city-game](https://github.com/yurifrl/city-game)** — Cooperative city simulation delivered as a video stream: one Rust server simulates, renders (wgpu) and encodes; the browser only plays video and sends input.
+- 🧩 **[pi-hub](https://github.com/yurifrl/pi-hub)** · **[claude-plugins](https://github.com/yurifrl/claude-plugins)** — Supervision board for running coding agents, and Claude Code plugins written as TypeScript hook modules.
+
+### 🛠️ Stack
+
+```
+Platform            │  Kubernetes · Talos · ArgoCD · Crossplane · Helm · Istio · Cilium
+Languages           │  Go · TypeScript · Python · Swift · Rust · Nix
+AI & Agents         │  MCP · Claude Code · LangGraph · LLM Gateways · AWS Bedrock
+Cloud & IaC         │  AWS (EKS) · GCP · Terraform · NixOS · Proxmox
+Observability       │  Prometheus · VictoriaMetrics · Grafana · OpenTelemetry · SLOs
+```
+
+### 🧠 Interests
+
+LLM Agents • Developer Experience • Homelabs • Distributed Systems • Tabletop RPGs • Board Games
+
+### 📝 Site
+
+Résumé, posts and cheat sheets live at **[yurifrl.dev](https://yurifrl.dev)**
+
+<div align="center">
+  <br>
+  <img src="https://github-readme-stats.vercel.app/api?username=yurifrl&show_icons=true&theme=dracula&hide_border=true&count_private=true" height="150" />
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=yurifrl&layout=compact&theme=dracula&hide_border=true&hide=html,css" height="150" />
+</div>
