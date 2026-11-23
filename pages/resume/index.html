@@ -118,3 +118,12 @@ permalink: /cv/
     <button class="no-print" onclick="window.print()">PDF</button>
   </footer>
 </div>
+
+{% comment %} Browsers name the saved PDF (and its Title field) after document.title. {% endcomment %}
+<script>
+  (function () {
+    var pageTitle = document.title;
+    window.addEventListener('beforeprint', function () { document.title = 'Yuri Freire Lima - CV'; });
+    window.addEventListener('afterprint', function () { document.title = pageTitle; });
+  })();
+</script>
