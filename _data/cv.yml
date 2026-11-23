@@ -92,6 +92,8 @@ proficiencies:
       weight: 5
     - title: "Google ADK"
       weight: 5
+    - title: "Jev"
+      weight: 5
     - title: "Kafka"
       weight: 5
     - title: "Redis"
@@ -160,7 +162,7 @@ previous:
         - "Wrote the Athena-backed cost APIs (Python, FastAPI, boto3) for the FinOps Hub, fixing attribution that had left about 72% of a month's AWS spend unattributed."
         - "Designed and ran World Cup hypercare across 90+ matches, leading the Watch Tower portal and the main war rooms: roles, runbooks, dashboards, escalation paths, and Showtime, a live stream of matches with real-time metrics overlaid. Held the platform through a record 200,000 concurrent users (116 EKS nodes) in Brazil vs Haiti."
         - "Created and led the load-testing platform (41 services, 1,500+ published run reports), triggered from GitHub Actions, PR comments, a CLI or AI agents, staging-only by default with SRE review for production. It exposed real breaking points and misattributed bottlenecks before peak traffic hit and is now a standard part of the developer workflow."
-        - "Set up the SLO and incident-response practice: led incident response and blameless postmortems through the tournament (61 incidents in incident.io, 29 inside match war rooms), hosted a weekly incident-learning session, and built Incident Review Admin for automated review slides, action-item follow-up and AI-assisted investigation."
+        - "Set up the SLO and incident-response practice: led incident response and blameless postmortems through the tournament (61 incidents in incident.io, 29 inside match war rooms), hosted a weekly incident-learning session, and built Incident Review Admin for automated review slides, action-item follow-up and AI-assisted investigation, with Jev judging incident triage, duplicates and follow-up impact."
         - "Rolled out an AI on-call agent that reacts to Grafana OnCall alerts (~900 a month), troubleshoots them on its own through tool-calling over kubectl, Prometheus metrics, logs, traces and runbooks, and hands on-call developers a root-cause analysis to start from."
         - "Created two agent-driven testing systems: Guru (LangGraph, FastAPI, Redis, Postgres), whose 10 specialist agents read service SLIs and open draft PRs with stronger k6 load tests (22 PRs in its first week); and e2ai (Go, TypeScript, Playwright), whose agents run end-to-end test plans on web and mobile apps and post verdicts with evidence on PRs."
         - Cut the delivery pipeline from about 30 minutes to 5–10 minutes through Docker build and pipeline optimization, so teams deploy more often.
